@@ -1,0 +1,19 @@
+{
+  "name": "turf_module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Keeley Hammond",
+  "license": "MIT",
+  "dependencies": {
+    "@turf/turf": "^4.6.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}
