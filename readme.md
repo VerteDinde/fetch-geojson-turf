@@ -36,17 +36,17 @@ simplify(data, options)
   });
 ```
 
-##### Data Formats
+## Data Formats
 This module only take input data that is in geoJSON format - not regular json, ndjson or topogeojson. Many geoJSON data sets can be found on `opendata.arcgis.com` or `opendata.gov`. 
 
-##### Available Options
-  - `tolerance:` [number] Simplification tolerance (optional, default 1)
-  - `highQuality:` [boolean] Whether or not to spend more time to create a higher-quality simplification with a different algorithm (optional; default `false`)
-  - `keepProperties:` [array[string, string, ...]] Discards superfluous properties on a geoJSON file, unless specifically mentioned.
+## Available Options
+  - `tolerance:` [**number**] Simplification tolerance (optional, default 1)
+  - `highQuality:` [**boolean**] Whether or not to spend more time to create a higher-quality simplification with a different algorithm (optional; default `false`)
+  - `keepProperties:` [**array**[**string**, **string**, ...]] Discards superfluous properties on a geoJSON file, unless specifically mentioned.
 
   The properties you may or may not want to keep will vary, depending on your geoJSON file, but usually consist of single-depth `{ key: value }` mappings. Common properties include:
   - `OBJECTID`
   - `NAME`
 
-##### Contribute
+## Contribute
 Accepting pull requests and issues! Click through to our GitHub repo to contribute or post an issue.
