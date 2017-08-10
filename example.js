@@ -1,5 +1,5 @@
-var fs = require('fs');
-var simplify = require('.');
+var fsp = require('fsp');
+var simplify = require('./index');
 
 var data = 'https://opendata.arcgis.com/datasets/cd78700c5c5c4a338090ce4c7b996f03_3.geojson';
 var options = {
@@ -8,11 +8,8 @@ var options = {
   keepProperties: ['NAME']
 };
 
-simplify(data, options, function (err, result) {
-  if (err) return console.error(err);
-  console.log('Here');
-  fs.writeFile('output.json', JSON.stringify(result), function (err) {
-    if (err) return console.error(err);
-    console.log('SUCCESS!!');
+simplify(data, options)
+  .then(result => {
+    console.log('File Successfully Written.');
+    return fsp.writeFile('output.json', JSON.stringify(result));
   });
-});

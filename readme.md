@@ -1,4 +1,4 @@
-# fetch-geojson-turf
+# fetch-simple-geojson-p
 
 This module fetches a geojson file from an http link and tries to reduce the file size by:
 
@@ -6,11 +6,13 @@ This module fetches a geojson file from an http link and tries to reduce the fil
 * Simplifying geometry via `turf.simplify()`
 * Keeping only specified property values
 
+This module is promisified; a version for callbacks can be found under `fetch-simple-geojson`.
+
 ## Usage
 
 ```js
 var fs = require('fs')
-var simplify = require('fetch-simple-geojson')
+var simplify = require('fetch-simple-geojson-p')
 
 var data = 'https://opendata.arcgis.com/datasets/cd78700c5c5c4a338090ce4c7b996f03_3.geojson'
 var options = {

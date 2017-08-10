@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@turf/turf": "^4.6.1",
-    "request": "^2.81.0",
+    "fsp": "^0.1.2",
     "request-promise": "^4.2.1"
   }
 }

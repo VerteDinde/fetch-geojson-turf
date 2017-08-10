@@ -1,10 +1,10 @@
-const turf = require('@turf/turf');
 const request = require('request-promise');
+const turf = require('@turf/turf');
 
 module.exports = (url, options) => {
   const opts = { json: true };
 
-  request(url, opts, (err, res, body) => {
+  return request(url, opts, (err, res, body) => {
     return turf.truncate(body);
   })
     .then(truncated => {
@@ -24,21 +24,5 @@ module.exports = (url, options) => {
       });
       simplified.features = filtered;
       return simplified.features;
-    })
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+    });
 };
-
-
-      // return simplified.features.map(feature => {
-      //   const newObj = {};
-      //   Object.keys(feature.properties).map(key => {
-      //     for (let i = 0; i < props.length; i++) {
-      //       if (key === props[i]) {
-      //         newObj[props[i]] = feature.properties[key];
-      //       }
-      //     }
-      //     // console.log(newObj);
-      //     feature.properties = newObj;
-      //   });
-      // });
