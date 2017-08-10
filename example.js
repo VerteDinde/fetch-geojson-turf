@@ -10,6 +10,7 @@ var options = {
 
 simplify(data, options, function (err, result) {
   if (err) return console.error(err);
+  console.log('Here');
   fs.writeFile('output.json', JSON.stringify(result), function (err) {
     if (err) return console.error(err);
     console.log('SUCCESS!!');

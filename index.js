@@ -11,29 +11,34 @@ module.exports = (url, options) => {
       return turf.simplify(truncated, options.tolerance, options.highQuality);
     })
     .then(simplified => {
-      const props = options.keepProperties;
-
-      return simplified.features.map(feature => {
-        const newObj = {};
-        Object.keys(feature.properties).map(key => {
-          for (let i = 0; i < props.length; i++) {
-            if (key === props[i]) {
-              newObj[props[i]] = feature.properties[key];
-            }
+      const screenedProperties = options.keepProperties;
+      const filtered = simplified.features.map(function (feature) {
+        const result = {};
+        Object.keys(feature.properties).forEach(function (key) {
+          if (screenedProperties.includes(key)) {
+            result[key] = feature.properties[key];
           }
-          console.log(newObj);
-          feature.properties = newObj;
         });
+        feature.properties = result;
+        return feature;
       });
+      simplified.features = filtered;
+      return simplified.features;
     })
-    .then(data => {
-      console.log('Final: ', data);
-    });
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 };
 
 
-
-
-
-// simplify(data, options, function (err, result) {
-// output: geojson file
+      // return simplified.features.map(feature => {
+      //   const newObj = {};
+      //   Object.keys(feature.properties).map(key => {
+      //     for (let i = 0; i < props.length; i++) {
+      //       if (key === props[i]) {
+      //         newObj[props[i]] = feature.properties[key];
+      //       }
+      //     }
+      //     // console.log(newObj);
+      //     feature.properties = newObj;
+      //   });
+      // });
