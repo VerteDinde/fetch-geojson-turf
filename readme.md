@@ -11,21 +11,19 @@ This module is promisified; a version for callbacks can be found under `fetch-si
 ## Usage
 
 ```js
-var fs = require('fs')
-var simplify = require('fetch-simple-geojson-p')
+const fs = require('fsp')
+const simplify = require('fetch-simple-geojson-p')
 
-var data = 'https://opendata.arcgis.com/datasets/cd78700c5c5c4a338090ce4c7b996f03_3.geojson'
-var options = {
+const data = 'https://opendata.arcgis.com/datasets/cd78700c5c5c4a338090ce4c7b996f03_3.geojson'
+const options = {
   tolerance: 0.0001,
   highQuality: true,
   keepProperties: ['NAME']
 }
 
-simplify(data, options, function (err, result) {
-  if (err) return console.error(err)
-  fs.writeFile('output.json', JSON.stringify(result), function (err) {
-    if (err) return console.error(err)
-    console.log('SUCCESS!!')
-  })
-})
+simplify(data, options)
+  .then(result => {
+    console.log('File Successfully Written.');
+    return fsp.writeFile('output.json', JSON.stringify(result));
+  });
 ```
